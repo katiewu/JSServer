@@ -17,6 +17,7 @@ var uriUtil = require('mongodb-uri');
 var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
 
 var User;
+var Task;
 
 var mongodbUri = "mongodb://linjie333:123456@ds041593.mongolab.com:41593/tasker";
 
@@ -36,8 +37,18 @@ db.once('open', function callback() {
     phonenumber: String,
     venmoid: String
   });
+
+  var taskSchema = mongoose.Schema({
+    username: String,
+    timestamp: String,
+    location: [Number],
+    description: String,
+    price: Number,
+    status: String
+  });
   
   User = mongoose.model('users', userSchema);
+  Task = mongoose.model('tasks', taskSchema);
 
 });
 
@@ -54,7 +65,11 @@ db.once('open', function callback() {
   we specify that in the exports of this module that 'hello' maps to the function named 'hello'
  */
 module.exports = {
-  hello: hello
+  login: login,
+  register: register,
+  sendtask: sendTask,
+  receivetask: receiveTask,
+  updatetasklist: updateTaskList
 };
 
 /*
@@ -63,16 +78,98 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function hello(req, res) {
-    // console.log("hahahaha");
- //    console.log(res.body.phonenumber);
+function login(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  // var phonenumber = req.body.phonenumber;
-  // var password = req.body.password;
-   var json_res = {"message": "111"};
-  // var hello = util.format('Hello, %s!', name);
+   var phonenumber = req.query.phonenumber;
+   var password = req.query.password;
 
-  // this sends back a JSON response which is a single string
-  res.json(json_res);
-  // res.send("aaaaaa");
+   User.find({phonenumber: phonenumber}, function(err, users){
+       if(users == undefined || users == null || users.length == 0){
+           var error_res = {"status": "false"};
+           res.json(error_res);
+       }
+       else {
+           var user = users[0];
+           var pnumber = user.phonenumber;
+           var pwd = user.password;
+           if (password != pwd) {
+               var pwderr_res = {"status": "false"};
+               res.json(pwderr_res);
+           }
+           else {
+               var username = user.username;
+               var venmoid = user.venmoid;
+               var json_res = {
+                   "status": "true",
+                   "username": username,
+                   "phonenumber": phonenumber,
+                   "password": password,
+                   "venmoid": venmoid
+               };
+               res.json(json_res);
+           }
+       }
+
+   });
+
+}
+
+function register(req, res){
+    var phonenumber = req.query.phonenumber;
+    var password = req.query.password;
+    var username = req.query.username;
+    var venmoid = req.query.venmoid;
+
+    var user = new User({
+        phonenumber: phonenumber,
+        password: password,
+        username: username,
+        venmoid: venmoid
+    });
+
+    user.save();
+    var json_res = {"registerResult": "successful"};
+    res.json(json_res);
+}
+
+function sendTask(req, res){
+    var username = req.query.username;
+    var timestamp = req.query.timestamp;
+    var location = req.query.location;
+    var description = req.query.description;
+    var price = req.query.price;
+    var receiver = req.query.receiver;
+    var status = "Unprocessed";
+
+    var task = new Task({
+        username: username,
+        timestamp: timestamp,
+        location: location,
+        description: description,
+        price: price,
+        status: status,
+        receiver: receiver
+    });
+
+    task.save();
+
+}
+
+function updateTaskList(req, res){
+    Task.find({}, function(err, tasks){
+        if(!err){
+            var task_list = tasks;
+            res.json(task_list);
+        }
+    });
+}
+
+function receiveTask(req, res){
+    var phonenumber = req.query.phonenumber;
+    var timestamp = req.query.timestamp;
+    var username = req.query.username;
+
+    Task.find({phonenumber: phonenumber, timestamp: timestamp}, function(err, users){
+
+    });
 }

@@ -18,13 +18,51 @@ consumes:
 produces:
   - application/json
 paths:
+  /register:
+    x-swagger-router-controller: hello_world
+    get:
+      description: register the user
+      # used as the method name of the controller
+      operationId: register
+      parameters:
+        - name: phonenumber
+          in: query
+          description: The name of the person to whom to say hello
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The name of the person to whom to say hello
+          required: true
+          type: string
+        - name: username
+          in: query
+          description: The name of the person to whom to say hello
+          required: true
+          type: string
+        - name: venmoid
+          in: query
+          description: The name of the person to whom to say hello
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/RegisterResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /login:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
     get:
       description: Returns 'Hello' to the caller
       # used as the method name of the controller
-      operationId: hello
+      operationId: login
       parameters:
         - name: phonenumber
           in: query
@@ -41,7 +79,7 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/LoginResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -49,11 +87,29 @@ paths:
             $ref: "#/definitions/ErrorResponse"
 # complex objects have schema definitions
 definitions:
-  HelloWorldResponse:
+  RegisterResponse:
+      required:
+        - registerResult
+      properties:
+        registerResult:
+          type: string
+  LoginResponse:
     required:
-      - message
+      - status
+      - username
+      - password
+      - phonenumber
+      - venmoid
     properties:
-      message:
+      status:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      phonenumber:
+        type: string
+      venmoid:
         type: string
   ErrorResponse:
     required:
