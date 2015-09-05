@@ -85,8 +85,186 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /sendTask:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: sendtask
+      parameters:
+         - name: phonenumber
+           in: query
+           description: The name of the person to whom to say hello
+           required: true
+           type: string
+         - name: timestamp
+           in: query
+           description: The name of the person to whom to say hello
+           required: true
+           type: string
+         - name: location
+           in: query
+           description: The name of the person to whom to say hello
+           required: true
+           type: string
+         - name: description
+           in: query
+           description: The name of the person to whom to say hello
+           required: true
+           type: string
+         - name: price
+           in: query
+           description: The name of the person to whom to say hello
+           required: true
+           type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/SendTaskResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /updateTaskList:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: updatetasklist
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/UpdateResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /updateLocation:
+      # binds a127 app logic to a route
+      x-swagger-router-controller: hello_world
+      get:
+        description: Returns 'Hello' to the caller
+        # used as the method name of the controller
+        operationId: updatelocation
+        parameters:
+           - name: phonenumber
+             in: query
+             description: The name of the person to whom to say hello
+             required: true
+             type: string
+           - name: longitude
+             in: query
+             description: The name of the person to whom to say hello
+             required: true
+             type: number
+           - name: latitude
+             in: query
+             description: The name of the person to whom to say hello
+             required: true
+             type: number
+        responses:
+          "200":
+            description: Success
+            schema:
+              # a pointer to a definition
+              $ref: "#/definitions/UpdateLocationResponse"
+          # responses may fall through to errors
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
+  /pollingLocation:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: pollinglocation
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PollingResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 # complex objects have schema definitions
 definitions:
+  PollingResponse:
+      required:
+        - locationList
+      properties:
+        locationList:
+          type: array
+          items:
+            $ref: '#/definitions/Location'
+  Location:
+      required:
+        - phonenumber
+        - longitude
+        - latitude
+      properties:
+        phonenumber:
+          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
+  UpdateLocationResponse:
+      required:
+        - status
+      properties:
+        status:
+          type: string
+  UpdateResponse:
+      required:
+        - taskList
+      properties:
+        taskList:
+          type: array
+          items:
+            $ref: '#/definitions/Task'
+  Task:
+      required:
+        - phonenumber
+        - timestamp
+        - location
+        - description
+        - price
+        - receiver
+        - status
+      properties:
+        phonenumber:
+          type: string
+        timestamp:
+          type: string
+        location:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        receiver:
+          type: string
+        status:
+          type: string
+  SendTaskResponse:
+      required:
+        - registerResult
+      properties:
+        registerResult:
+          type: string
   RegisterResponse:
       required:
         - registerResult

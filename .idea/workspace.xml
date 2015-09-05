@@ -4,7 +4,6 @@
     <list default="true" id="a1161fe1-9568-4082-b380-26b3b03e339c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/hello_world.js" afterPath="$PROJECT_DIR$/api/controllers/hello_world.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/swagger/swagger.yaml" afterPath="$PROJECT_DIR$/api/swagger/swagger.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JSServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="hello_world.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/controllers/hello_world.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6831169">
-              <caret line="54" column="2" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
+            <state vertical-scroll-proportion="3.5798526">
+              <caret line="233" column="9" selection-start-line="233" selection-start-column="9" selection-end-line="233" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -58,7 +57,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1366" />
-    <option name="height" value="678" />
+    <option name="height" value="674" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -207,11 +206,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1366" height="678" extended-state="6" />
+    <frame x="0" y="23" width="1366" height="674" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30136988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1747212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -223,7 +223,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -255,16 +254,119 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96314496">
-          <caret line="93" column="22" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
-          <folding />
+        <state vertical-scroll-proportion="0.7788698">
+          <caret line="222" column="22" selection-start-line="222" selection-start-column="22" selection-end-line="222" selection-end-column="22" />
+          <folding>
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="info:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schemes:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="consumes:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="produces:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="paths:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="/register:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="get:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="parameters:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="responses:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="&quot;200&quot;:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="default:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="/login:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="get:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="parameters:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="responses:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="&quot;200&quot;:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="default:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="/sendTask:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="get:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="parameters:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="responses:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="&quot;200&quot;:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="default:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="/updateTaskList:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="get:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="responses:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="&quot;200&quot;:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="default:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="/updateLocation:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="get:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="parameters:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="responses:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="&quot;200&quot;:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="default:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="/pollingLocation:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="get:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="responses:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="&quot;200&quot;:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="default:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="schema:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="definitions:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="PollingResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="locationList:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="items:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="Location:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="phonenumber:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="longitude:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="latitude:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="UpdateLocationResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="status:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="UpdateResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="taskList:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="items:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="Task:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="phonenumber:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="timestamp:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="location:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="description:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="price:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="receiver:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="status:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="SendTaskResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="registerResult:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="RegisterResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="registerResult:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="LoginResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="status:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="username:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="password:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="phonenumber:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="venmoid:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="ErrorResponse:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="required:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="properties:" />
+            <marker date="1441484664000" expanded="true" signature="-1:-1" placeholder="message:" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/hello_world.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6831169">
-          <caret line="54" column="2" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
+        <state vertical-scroll-proportion="3.5798526">
+          <caret line="233" column="9" selection-start-line="233" selection-start-column="9" selection-end-line="233" selection-end-column="9" />
           <folding />
         </state>
       </provider>

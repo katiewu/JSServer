@@ -35,17 +35,21 @@ db.once('open', function callback() {
     username: String,
     password: String,
     phonenumber: String,
-    venmoid: String
+    venmoid: String,
+    longitude: Number,
+    latitude: Number
   });
 
   var taskSchema = mongoose.Schema({
-    username: String,
+    phonenumber: String,
     timestamp: String,
-    location: [Number],
+    location: String,
     description: String,
     price: Number,
+    receiver: String,
     status: String
   });
+
   
   User = mongoose.model('users', userSchema);
   Task = mongoose.model('tasks', taskSchema);
@@ -69,7 +73,9 @@ module.exports = {
   register: register,
   sendtask: sendTask,
   receivetask: receiveTask,
-  updatetasklist: updateTaskList
+  updatetasklist: updateTaskList,
+  updatelocation: updateLocation,
+  pollinglocation: pollingLocation
 };
 
 /*
@@ -124,7 +130,9 @@ function register(req, res){
         phonenumber: phonenumber,
         password: password,
         username: username,
-        venmoid: venmoid
+        venmoid: venmoid,
+        longitude: 0,
+        latitude: 0
     });
 
     user.save();
@@ -132,33 +140,44 @@ function register(req, res){
     res.json(json_res);
 }
 
+
 function sendTask(req, res){
-    var username = req.query.username;
+    var phonenumber = req.query.phonenumber;
     var timestamp = req.query.timestamp;
     var location = req.query.location;
     var description = req.query.description;
     var price = req.query.price;
-    var receiver = req.query.receiver;
-    var status = "Unprocessed";
+    var receiver = "null";
+    var status = "unprocessed";
 
     var task = new Task({
-        username: username,
+        phonenumber: phonenumber,
         timestamp: timestamp,
         location: location,
         description: description,
         price: price,
-        status: status,
-        receiver: receiver
+        receiver: receiver,
+        status: status
+
     });
 
     task.save();
+
+    var json_res = {"registerResult": "successful"};
+    res.json(json_res);
 
 }
 
 function updateTaskList(req, res){
     Task.find({}, function(err, tasks){
         if(!err){
-            var task_list = tasks;
+            var unprocessed_tasks = [];
+            for(var i=0;i<task.length;i++){
+                if(task.status == "unprocessed"){
+                    unprocessed_tasks.push(task);
+                }
+            }
+            var task_list = {taskList: unprocessed_tasks};
             res.json(task_list);
         }
     });
@@ -168,8 +187,50 @@ function receiveTask(req, res){
     var phonenumber = req.query.phonenumber;
     var timestamp = req.query.timestamp;
     var username = req.query.username;
+    var receiver = req.query.receiver;
 
-    Task.find({phonenumber: phonenumber, timestamp: timestamp}, function(err, users){
+    Task.find({phonenumber: phonenumber, timestamp: timestamp}, function(err, tasks){
+        if(!err){
+            if(tasks == undefined || tasks == null || tasks.length == 0){
+                res.json({"result": "fail"});
+            }
+            else{
+                var task = tasks[0];
+                // update task receiver, status
+                Task.update({phonenumber: phonenumber, timestamp: timestamp},
+                    {receiver: receiver, status: "processed"}, {multi: true}, function(err, numsAffected){
 
+                    });
+            }
+        }
+    });
+}
+
+function updateLocation(req, res){
+    var phonenumber = req.query.phonenumber;
+    var longitude = req.query.longitude;
+    var latitude = req.query.latitude;
+
+    User.update({phonenumber: phonenumber},
+        {longitude: longitude, latitude: latitude}, {multi: true}, function(err, numsAffected){
+            res.json({status: "true"});
+        });
+}
+
+function pollingLocation(req, res){
+    var phonenumber = req.query.phonenumber;
+    User.find({}, function(err, users){
+        if(!err){
+            var locations = [];
+            for(var i=0;i<users.length;i++){
+                var user = users[i];
+                if(user.phonenumber != phonenumber && (user.longitude != 0 || user.latitude != 0)){
+                    var location = {phonenumber: user.phonenumber, longitude: user.longitude, latitude: user.latitude};
+                    locations.push(location);
+                }
+            }
+            var location_list = {locationList: locations};
+            res.json(location_list);
+        }
     });
 }
