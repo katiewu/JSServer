@@ -14,6 +14,9 @@ var util = require('util');
 var mongoose = require('mongoose');
 var uriUtil = require('mongodb-uri');
 
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
+
+var User;
 
 var mongodbUri = "mongodb://linjie333:123456@ds041593.mongolab.com:41593/tasker";
 
@@ -61,12 +64,15 @@ module.exports = {
   Param 2: a handle to the response object
  */
 function hello(req, res) {
+    // console.log("hahahaha");
+ //    console.log(res.body.phonenumber);
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var phonenumber = req.swagger.params.phonenumber.value;
-  var password = req.swagger.params.password.value;
-  var json_res = {"phonenumber": phonenumber, "password": password};
+  // var phonenumber = req.body.phonenumber;
+  // var password = req.body.password;
+   var json_res = {"message": "111"};
   // var hello = util.format('Hello, %s!', name);
 
   // this sends back a JSON response which is a single string
   res.json(json_res);
+  // res.send("aaaaaa");
 }

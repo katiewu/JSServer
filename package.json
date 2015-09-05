@@ -9,6 +9,8 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^4.1.5",
     "swagger-express-mw": "0.0.x"
   },
   "devDependencies": {

@@ -26,10 +26,15 @@ paths:
       # used as the method name of the controller
       operationId: hello
       parameters:
-        - name: name
-          in: body
+        - name: phonenumber
+          in: query
           description: The name of the person to whom to say hello
-          required: false
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: The name of the person to whom to say hello
+          required: true
           type: string
       responses:
         "200":
@@ -44,9 +49,6 @@ paths:
             $ref: "#/definitions/ErrorResponse"
 # complex objects have schema definitions
 definitions:
-  Login:
-    required:
-      -
   HelloWorldResponse:
     required:
       - message
