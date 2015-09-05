@@ -11,6 +11,32 @@
   It is a good idea to list the modules that your application depends on in the package.json in the project root
  */
 var util = require('util');
+var mongoose = require('mongoose');
+var uriUtil = require('mongodb-uri');
+
+
+var mongodbUri = "mongodb://linjie333:123456@ds041593.mongolab.com:41593/tasker";
+
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+
+mongoose.connect(mongooseUri, options);
+
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function callback() {
+  
+  //create user schema
+  var userSchema = mongoose.Schema({
+    username: String,
+    password: String,
+    phonenumber: String,
+    venmoid: String
+  });
+  
+  User = mongoose.model('users', userSchema);
+
+});
 
 /*
  Once you 'require' a module you can reference the things that it exports.  These are defined in module.exports.
@@ -36,9 +62,11 @@ module.exports = {
  */
 function hello(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var name = req.swagger.params.name.value || 'stranger';
-  var hello = util.format('Hello, %s!', name);
+  var phonenumber = req.swagger.params.phonenumber.value;
+  var password = req.swagger.params.password.value;
+  var json_res = {"phonenumber": phonenumber, "password": password};
+  // var hello = util.format('Hello, %s!', name);
 
   // this sends back a JSON response which is a single string
-  res.json(hello);
+  res.json(json_res);
 }
