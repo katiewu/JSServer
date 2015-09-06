@@ -43,7 +43,8 @@ db.once('open', function callback() {
   var taskSchema = mongoose.Schema({
     phonenumber: String,
     timestamp: String,
-    location: String,
+    longitude: Number,
+    latitude: Number,
     description: String,
     price: Number,
     receiver: String,
@@ -148,21 +149,23 @@ function register(req, res){
 function sendTask(req, res){
     var phonenumber = req.query.phonenumber;
     var timestamp = req.query.timestamp;
-    var location = req.query.location;
+    var longitude = req.query.longitude;
+    var latitude = req.query.latitude;
     var description = req.query.description;
     var price = req.query.price;
     var receiver = "null";
     var status = "unprocessed";
 
+    console.log("Receive task");
     var task = new Task({
         phonenumber: phonenumber,
         timestamp: timestamp,
-        location: location,
+        longitude: longitude,
+        latitude: latitude,
         description: description,
         price: price,
         receiver: receiver,
         status: status
-
     });
 
     task.save();
@@ -173,10 +176,12 @@ function sendTask(req, res){
 }
 
 function updateTaskList(req, res){
+    console.log("update tasklist");
     Task.find({}, function(err, tasks){
         if(!err){
             var unprocessed_tasks = [];
-            for(var i=0;i<task.length;i++){
+            for(var i=0;i<tasks.length;i++){
+                var task = tasks[i];
                 if(task.status == "unprocessed"){
                     unprocessed_tasks.push(task);
                 }
@@ -190,7 +195,6 @@ function updateTaskList(req, res){
 function receiveTask(req, res){
     var phonenumber = req.query.phonenumber;
     var timestamp = req.query.timestamp;
-    var username = req.query.username;
     var receiver = req.query.receiver;
 
     Task.find({phonenumber: phonenumber, timestamp: timestamp}, function(err, tasks){
@@ -203,7 +207,7 @@ function receiveTask(req, res){
                 // update task receiver, status
                 Task.update({phonenumber: phonenumber, timestamp: timestamp},
                     {receiver: receiver, status: "processed"}, {multi: true}, function(err, numsAffected){
-
+                        res.json({status: "true"});
                     });
             }
         }

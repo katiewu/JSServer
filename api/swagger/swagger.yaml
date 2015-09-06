@@ -103,11 +103,16 @@ paths:
            description: The name of the person to whom to say hello
            required: true
            type: string
-         - name: location
+         - name: longitude
            in: query
            description: The name of the person to whom to say hello
            required: true
-           type: string
+           type: number
+         - name: latitude
+           in: query
+           description: The name of the person to whom to say hello
+           required: true
+           type: number
          - name: description
            in: query
            description: The name of the person to whom to say hello
@@ -181,6 +186,40 @@ paths:
             description: Error
             schema:
               $ref: "#/definitions/ErrorResponse"
+  /receiveTask:
+          # binds a127 app logic to a route
+      x-swagger-router-controller: hello_world
+      get:
+        description: Returns 'Hello' to the caller
+        # used as the method name of the controller
+        operationId: receivetask
+        parameters:
+           - name: phonenumber
+             in: query
+             description: The name of the person to whom to say hello
+             required: true
+             type: string
+           - name: timestamp
+             in: query
+             description: The name of the person to whom to say hello
+             required: true
+             type: string
+           - name: receiver
+             in: query
+             description: The name of the person to whom to say hello
+             required: true
+             type: string
+        responses:
+          "200":
+            description: Success
+            schema:
+              # a pointer to a definition
+              $ref: "#/definitions/ReceiveTaskResponse"
+          # responses may fall through to errors
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
   /confirmTask:
         # binds a127 app logic to a route
         x-swagger-router-controller: hello_world
@@ -232,6 +271,12 @@ paths:
 definitions:
   OpenResponse:
       properties: {}
+  ReceiveTaskResponse:
+      required:
+        - status
+      properties:
+        status:
+          type: string
   ConfirmTaskResponse:
       required:
         - status
@@ -276,7 +321,8 @@ definitions:
       required:
         - phonenumber
         - timestamp
-        - location
+        - longitude
+        - latitude
         - description
         - price
         - receiver
@@ -286,8 +332,10 @@ definitions:
           type: string
         timestamp:
           type: string
-        location:
-          type: string
+        longitude:
+          type: number
+        latitude:
+          type: number
         description:
           type: string
         price:
