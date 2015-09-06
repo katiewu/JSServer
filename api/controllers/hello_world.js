@@ -75,9 +75,13 @@ module.exports = {
   receivetask: receiveTask,
   updatetasklist: updateTaskList,
   updatelocation: updateLocation,
-  pollinglocation: pollingLocation
+  pollinglocation: pollingLocation,
+  confirmtask: confirmTask
 };
 
+
+
+var locations = {};
 /*
   Functions in a127 controllers used for operations should take two parameters:
 
@@ -211,6 +215,8 @@ function updateLocation(req, res){
     var longitude = req.query.longitude;
     var latitude = req.query.latitude;
 
+    locations[phonenumber] = [longitude, latitude];
+
     User.update({phonenumber: phonenumber},
         {longitude: longitude, latitude: latitude}, {multi: true}, function(err, numsAffected){
             res.json({status: "true"});
@@ -219,18 +225,51 @@ function updateLocation(req, res){
 
 function pollingLocation(req, res){
     var phonenumber = req.query.phonenumber;
-    User.find({}, function(err, users){
+    var keyset = Object.keys(locations);
+    var results = [];
+    for(var keyindex in keyset){
+        console.log(keyindex);
+        var key = keyset[keyindex];
+        if(key != phonenumber){
+            console.log("hahahahaha");
+            var location = {phonenumber: key, longitude: locations[key][0], latitude: locations[key][1]};
+            results.push(location);
+        }
+    }
+    console.log("############");
+    console.log(results);
+    var location_list = {locationList: results};
+    console.log(location_list);
+    res.json(location_list);
+
+    //User.find({}, function(err, users){
+    //    if(!err){
+    //        var locations = [];
+    //        for(var i=0;i<users.length;i++){
+    //            var user = users[i];
+    //            if(user.phonenumber != phonenumber && (user.longitude != 0 || user.latitude != 0)){
+    //                var location = {phonenumber: user.phonenumber, longitude: user.longitude, latitude: user.latitude};
+    //                locations.push(location);
+    //            }
+    //        }
+    //        var location_list = {locationList: locations};
+    //        res.json(location_list);
+    //    }
+    //});
+}
+
+function confirmTask(req, res){
+    var phonenumber = req.query.phonenumber;
+    var timestamp = req.query.timestamp;
+
+    Task.find({phonenumber: phonenumber, timestamp: timestamp}, function(err, tasks){
         if(!err){
-            var locations = [];
-            for(var i=0;i<users.length;i++){
-                var user = users[i];
-                if(user.phonenumber != phonenumber && (user.longitude != 0 || user.latitude != 0)){
-                    var location = {phonenumber: user.phonenumber, longitude: user.longitude, latitude: user.latitude};
-                    locations.push(location);
-                }
-            }
-            var location_list = {locationList: locations};
-            res.json(location_list);
+            var task = tasks[0];
+            Task.update({phonenumber: phonenumber, timestamp: timestamp},
+                {status: "finished"}, {mutli: true}, function(err, numsAffected){
+                    res.json({status: "true"});
+                })
         }
     });
+
 }
