@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1161fe1-9568-4082-b380-26b3b03e339c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/hello_world.js" afterPath="$PROJECT_DIR$/api/controllers/hello_world.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/swagger/swagger.yaml" afterPath="$PROJECT_DIR$/api/swagger/swagger.yaml" />
-    </list>
+    <list default="true" id="a1161fe1-9568-4082-b380-26b3b03e339c" name="Default" comment="" />
     <ignored path="JSServer.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +24,8 @@
       <file leaf-file-name="hello_world.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/controllers/hello_world.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.990172">
-              <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.4422604">
+              <caret line="213" column="44" selection-start-line="213" selection-start-column="44" selection-end-line="213" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -380,8 +377,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/hello_world.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.990172">
-          <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.4422604">
+          <caret line="213" column="44" selection-start-line="213" selection-start-column="44" selection-end-line="213" selection-end-column="44" />
           <folding />
         </state>
       </provider>
